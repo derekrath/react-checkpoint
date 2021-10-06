@@ -1,5 +1,5 @@
 
-export default function SearchEmails({ emails, isSelected, id, emailSelectorFunc }) {
+export default function SearchEmails({ emails, isSelected, id, emailSelectorFunc, key }) {
     let emailLines = [];
     if (emails) {
         for (let i in emails) {

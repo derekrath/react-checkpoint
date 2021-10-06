@@ -13,7 +13,7 @@ export default class App extends Component {
     this.selectEmail = this.selectEmail.bind(this)
   }
 
-  selectedEmail(emailId){
+  selectEmail(emailId){
     this.setState({selectedEmail:emailId})
   }
 
@@ -48,7 +48,7 @@ export default class App extends Component {
           <button type="button">Search</button>
             <h2 id="displayChar"></h2>
         </form>
-        <ViewEmails emails={this.state.emails} emailSelectorFunc={this.selectEmail} selectedEmail={this.selectedEmail} userInput={this.state.userInput} />
+        <ViewEmails emails={this.state.emails} emailSelectorFunc={selectEmail} selectedEmail={this.selectedEmail} userInput={this.state.userInput} />
       </div>
     )
   }

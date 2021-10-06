@@ -9,13 +9,15 @@ export default function ViewEmails({ emails, userInput , emailSelectorFunc, sele
                 <SearchEmails emails={emails} userInput={userInput} />
             </ul>
         );
-    }
-
-    for (let i = 0; i <  emails.length; i++) {
-        let emailLines = [];
-        for (let j in emails[i]) {
-            emailLines.push(`${emails[i][j]}`);
-        }
+    } else {
+        for (let i = 0; i <  emails.length; i++) {
+            let emailLines = [];
+            for (let j in emails[i]) {
+                console.log(emails[i])
+                emailLines.push(`${emails[i][j]}`);
+            }
+            
+        };
         return (
             <div className="all-list">
                 <ul>
@@ -25,5 +27,5 @@ export default function ViewEmails({ emails, userInput , emailSelectorFunc, sele
                 </ul>
             </div>
         )
-    };
+    }
 }
