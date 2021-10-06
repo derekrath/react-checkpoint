@@ -1,25 +1,60 @@
-import logo from './logo.svg';
+import { Component } from 'react';
 import './App.css';
+import ViewEmails from "./components/ViewEmails";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      emails: [],
+      userInput: '',
+      selectedEmail: 0
+    };
+    this.selectEmail = this.selectEmail.bind(this)
+  }
+
+  selectedEmail(emailId){
+    this.setState({selectedEmail:emailId})
+  }
+
+  async componentDidMount() {
+    const emailServer = 'http://localhost:3001/emails'
+    const response = await fetch(emailServer);
+    const emailData = await response.json();
+    this.setState({emails: emailData});
+  }
+  
+  render() {
+    const {selectEmail} = this;
+    const input = document.querySelector('input');
+    const display = document.getElementById('displayChar');
+
+    if (input) {
+      input.addEventListener('change', (e) => {
+        let searchVal = e.target.value;
+        display.textContent = searchVal;
+        this.setState({ userInput: searchVal });
+      });
+    };
+    
+    console.log(this.state.emails)
+    console.log(this.state.userInput)
+
+    return (
+      <div className="App">
+        <form>
+          <label htmlFor="inputField">GMail Search:</label>
+          <input type="text" placeholder="Search by subject" name="inputField" />
+          <button type="button">Search</button>
+            <h2 id="displayChar"></h2>
+        </form>
+        <ViewEmails emails={this.state.emails} emailSelectorFunc={this.selectEmail} selectedEmail={this.selectedEmail} userInput={this.state.userInput} />
+      </div>
+    )
+  }
 }
 
-export default App;
+// View all of my email messages (subject line + sender)
+// View one of my email messages with all of its details
+// Send an email
+// Search for a specific email by subject
