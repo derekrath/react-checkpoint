@@ -5,26 +5,18 @@ export default function ViewEmails({ emails, userInput , emailSelectorFunc, sele
 
     if (userInput !== '') {
         return (
-            <ul className="search-list">
+            <div className="search-list">
                 <SearchEmails emails={emails} userInput={userInput} />
-            </ul>
+            </div>
         );
     } else {
-        for (let i = 0; i <  emails.length; i++) {
-            let emailLines = [];
-            for (let j in emails[i]) {
-                console.log(emails[i])
-                emailLines.push(`${emails[i][j]}`);
-            }
-            
-        };
         return (
             <div className="all-list">
-                <ul>
-                    {emails.map((email, index) => (
-                        <AllEmails emails={emails} emailSelectorFunc={emailSelectorFunc} isSelected={selectedEmail===email.id} id={email.id} key={index} />
+                <div>
+                    {emails.map((emailObj, index) => (
+                        <AllEmails email={emailObj} emailSelectorFunc={emailSelectorFunc} isSelected={selectedEmail===emailObj.id} id={emailObj.id} key={index} />
                     ))}
-                </ul>
+                </div>
             </div>
         )
     }

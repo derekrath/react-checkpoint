@@ -11,9 +11,9 @@ export default function SearchEmails({ emails, userInput }) {
         return (<>
             {
             emailLines.map((element, index) => (
-                <li key={index}>
+                <div key={index}>
                     {element}
-                </li>
+                </div>
             ))
             }
         </>)

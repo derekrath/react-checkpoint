@@ -1,20 +1,15 @@
 
-export default function SearchEmails({ emails, isSelected, id, emailSelectorFunc, key }) {
+export default function SearchEmails({ email, isSelected, id, emailSelectorFunc }) {
     let emailLines = [];
-    if (emails) {
-        for (let i in emails) {
-            emailLines.push(`${emails[i][2]} ${emails[i][0]}`);
+    let allEmailLines = [];
+    if (email) {
+        emailLines.push(`${email.subject} ${email.sender}`);
+        for (let key in email) {
+            allEmailLines.push(`${email[key]} `)
         }
         return (
             <div className="email" onClick={() => emailSelectorFunc(id)}>
-                {
-                emailLines.map((element, index) => (
-                    <li key={index}>
-                        {isSelected?(<p><h1>{element}</h1></p>):(<p>{element}</p>)}
-                        {isSelected?(<p>{emails[index]}</p>):<></>}
-                    </li>
-                ))
-            }
+                {isSelected?(<p><h1>{allEmailLines}</h1></p>):(<p>{emailLines}</p>)}
             </div>
         )
     } else {
