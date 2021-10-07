@@ -1,4 +1,3 @@
-// import ShipAttr from './ShipAttr';
 
 export default function SearchEmails({ emails, userInput }) {
 
@@ -8,15 +7,16 @@ export default function SearchEmails({ emails, userInput }) {
         for (let i in foundEmail) {
             emailLines.push(`${i} : ${foundEmail[i]}`);
         }
-        return (<>
-            {
-            emailLines.map((element, index) => (
-                <div key={index}>
-                    {element}
-                </div>
-            ))
-            }
-        </>)
+        return (
+            <div class="emailLine">
+                {
+                emailLines.map((element, index) => (
+                    <div key={index}>
+                        {element}
+                    </div>
+                ))
+                }
+            </div>)
     } else {
         return (<>{`No results.`}</>)
     }

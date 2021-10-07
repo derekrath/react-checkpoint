@@ -1,15 +1,16 @@
+import '../App.css';
 
 export default function SearchEmails({ email, isSelected, id, emailSelectorFunc }) {
     let emailLines = [];
     let allEmailLines = [];
     if (email) {
         emailLines.push(`${email.subject} ${email.sender}`);
-        for (let key in email) {
-            allEmailLines.push(`${email[key]} `)
+        for (let i in email) {
+            allEmailLines.push(<p>{`${i} : ${email[i]}`}</p>)
         }
         return (
-            <div className="email" onClick={() => emailSelectorFunc(id)}>
-                {isSelected?(<p><h1>{allEmailLines}</h1></p>):(<p>{emailLines}</p>)}
+            <div onClick={() => emailSelectorFunc(id)}>
+                {isSelected?(<div className="selected-email"><h1>{allEmailLines}</h1></div>):(<p>{emailLines}</p>)}
             </div>
         )
     } else {

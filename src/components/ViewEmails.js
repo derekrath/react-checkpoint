@@ -1,5 +1,6 @@
 import SearchEmails from "./SearchEmails";
 import AllEmails from "./AllEmails";
+import '../App.css';
 
 export default function ViewEmails({ emails, userInput , emailSelectorFunc, selectedEmail }) {
 

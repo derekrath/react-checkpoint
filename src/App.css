@@ -28,6 +28,25 @@
   color: #61dafb;
 }
 
+.emailLine {
+
+}
+
+.search-list {
+
+
+}
+
+.selected-email {
+  color: blue;
+  font-size: x-small;
+}
+
+.all-list {
+
+
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
